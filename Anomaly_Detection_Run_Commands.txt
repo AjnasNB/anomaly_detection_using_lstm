@@ -1,0 +1,28 @@
+
+# Commands to Run the Real-Time Anomaly Detection Code
+
+## Step 1: Install the Required Dependencies
+Make sure you have Python 3.x installed. To install the required libraries, use the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install TensorFlow, Streamlit, Plotly, and other necessary dependencies.
+
+## Step 2: Run the Streamlit Application
+To run the Streamlit application, execute the following command in your terminal or command prompt:
+
+```bash
+streamlit run anomaly_detection.py
+```
+
+
+
+## Step 3: Interact via the Browser
+Once the application starts, Streamlit will open a new tab in your web browser where you can interact with the anomaly detection system. If it does not open automatically, you can manually open your browser and navigate to the following address:
+
+```bash
+http://localhost:8501
+```
+Make sure two click every button twice
