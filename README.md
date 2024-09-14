@@ -13,6 +13,10 @@ This project demonstrates real-time anomaly detection using an LSTM Autoencoder.
 ## Application Link
 You can try the app live at the following link: [Anomaly Detection App](https://anomalydetectionusinglstm.streamlit.app/)
 
+## GIF Demo
+Here is a demonstration of the application in action:
+![Anomaly Detection Demo](./anomaly_detection_working.gif)
+
 ## Video Demo
 You can download and view the demo video here: [Download Demo Video](./anomaly_detection_working.py%20-%20cuddle%20-%20Visual%20Studio%20Code%202024-09-14%2017-17-59.mp4)
 

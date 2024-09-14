@@ -212,10 +212,8 @@ if st.session_state.running:
     if st.session_state.model is None:
         initial_data = [simulate_data(t, seasonal_amplitude, noise_level, anomaly_value) for t in range(window_size)]
         st.session_state.model = train_autoencoder(initial_data, window_size, initial_epochs)
-    
+
     # Real-time Plotting with Plotly
-    data_stream = []
-    anomaly_points = []
     threshold_ema = 0.1  # Initial threshold EMA
     while st.session_state.running:
         data_point = simulate_data(st.session_state.t, seasonal_amplitude, noise_level, anomaly_value)
@@ -226,17 +224,19 @@ if st.session_state.running:
             is_anomaly, mse, threshold_ema = detect_anomalies_lstm(st.session_state.model, data_window, threshold_ema)
 
             if is_anomaly:
-                st.session_state.anomalies.append(data_point)
+                st.session_state.anomalies.append(st.session_state.t)  # Append the time step of anomaly
             else:
                 st.session_state.anomalies.append(np.nan)
-            
+
+            # Get data points and anomalies for the last 200 points (adjusting for alignment)
             data_stream = st.session_state.data_points[-200:]
-            anomaly_points = st.session_state.anomalies[-200:]
+            anomaly_indices = [i for i, x in enumerate(st.session_state.anomalies[-200:]) if not np.isnan(x)]
+            anomaly_values = [data_stream[i] for i in anomaly_indices]  # Correct anomaly positions on the plot
 
             # Real-time Plotting with Plotly
             fig = go.Figure()
             fig.add_trace(go.Scatter(x=list(range(len(data_stream))), y=data_stream, mode='lines', name='Data Stream', line=dict(color='green')))
-            fig.add_trace(go.Scatter(x=list(range(len(anomaly_points))), y=anomaly_points, mode='markers', name='Anomalies', marker=dict(color='red')))
+            fig.add_trace(go.Scatter(x=anomaly_indices, y=anomaly_values, mode='markers', name='Anomalies', marker=dict(color='red')))
             st.plotly_chart(fig)
 
         st.session_state.t += 1
