@@ -10,8 +10,11 @@ This project demonstrates real-time anomaly detection using an LSTM Autoencoder.
 - **Real-time Visualization**: Displays the data stream and detected anomalies in real-time.
 - **PDF Reporting**: Generates a PDF report summarizing the anomalies detected.
 
+## Application Link
+You can try the app live at the following link: [Anomaly Detection App](https://anomalydetectionusinglstm.streamlit.app/)
+
 ## Video Demo
-You can watch a demo of how the application works here: [Demo Video](./anomaly_detection_working.py%20-%20cuddle%20-%20Visual%20Studio%20Code%202024-09-14%2017-17-59.mp4)
+You can download and view the demo video here: [Download Demo Video](./anomaly_detection_working.py%20-%20cuddle%20-%20Visual%20Studio%20Code%202024-09-14%2017-17-59.mp4)
 
 ## How to Run the Application
 
